@@ -1,0 +1,12 @@
+<div *ngIf="hero">
+	<h2>{{hero.name | uppercase}} Details</h2>
+	<div><span>id: </span>{{hero.id}}</div>
+	<div>
+	  <label for="hero-name">Hero name: </label>
+	  <mat-form-field>
+		  <input matInput id="hero-name" [(ngModel)]="hero.name">
+	  </mat-form-field>
+	  
+	</div>  
+</div>
+<button mat-raised-button color="primary" type="button" (click)="save()">save</button>
