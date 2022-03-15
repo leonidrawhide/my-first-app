@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FenceCasePipe implements PipeTransform {
 
-  transform(value: string): unknown {
+  transform(value: string): string {
     value = value.toLowerCase();
     let res = "";
     for (let i = 0; i < value.length; i++) {
