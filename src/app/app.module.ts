@@ -22,6 +22,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
+import { FenceCasePipe } from './fence-case.pipe';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import {MatInputModule} from '@angular/material/input';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    FenceCasePipe,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
