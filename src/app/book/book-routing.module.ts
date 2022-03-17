@@ -10,6 +10,7 @@ import { PageTwoComponent } from './page-two/page-two.component';
 
 const bookRoutes: Routes = [
   { path: 'book', component: BookComponent, children: [
+    { path: '', redirectTo: '/book/page-1', pathMatch: 'full' },
     { path: 'page-1', component: PageOneComponent},
     { path: 'page-2', component: PageTwoComponent},
     { path: 'page-3', component: PageThreeComponent },

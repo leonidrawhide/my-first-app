@@ -1,0 +1,26 @@
+.pagination-wrapper {
+	width: 843px;
+	margin: 0 auto 24px;
+
+	.pagination {
+		text-align: center;
+	
+		button {
+			margin: 0 2px;
+		}
+
+		.active {
+			background-color: #8F07CF;
+			color: white;
+		}
+		
+		.notactive {
+			background-color: #9007cf00;
+			box-shadow: none;
+			color: black;
+		}
+	}
+}
+
+
+
