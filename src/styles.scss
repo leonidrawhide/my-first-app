@@ -27,3 +27,36 @@ body, input[type="text"], button {
 	font-family: Arial, Helvetica, sans-serif;
 }
   
+
+.page-wrapper {
+	width: 843px;
+	margin: 0 auto;
+}
+
+.page {
+	margin: 24px 40px;
+	height: 500px;
+}
+
+.img-wrapper {
+	display: flex;
+	flex-direction: row;
+	/* height: 500px; */
+}
+
+.img-wrapper p {
+	margin-left: 10px;
+}
+
+p {
+	text-indent: 15px;
+	margin: 0;
+}
+
+.img-wrapper img {
+	max-width: 100%;
+	max-height: 100%;
+
+}
+
+html, body { height: 100%; }

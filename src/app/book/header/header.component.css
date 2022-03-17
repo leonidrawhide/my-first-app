@@ -1,0 +1,14 @@
+header {
+	height: 60px;
+	border-bottom: 1px solid #D8D8D8;
+	margin: 0;
+}
+
+.img-wrapper {
+	width: 843px;
+	margin: 0 auto;
+}
+
+.img-wrapper img {
+	margin: 16px auto auto 40px;
+}

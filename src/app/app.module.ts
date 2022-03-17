@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { FenceCasePipe } from './fence-case.pipe';
+import { BookModule } from './book/book.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FenceCasePipe } from './fence-case.pipe';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BookModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),

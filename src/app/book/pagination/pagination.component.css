@@ -1,0 +1,23 @@
+.pagination-wrapper {
+	width: 843px;
+	margin: 0 auto 24px;
+}
+
+.pagination {
+	/* margin: 0 auto; */
+	text-align: center;
+}
+
+.pagination button {
+	margin: 0 2px;
+}
+
+.active {
+	background-color: #8F07CF;
+	color: white;
+}
+
+.notactive {
+	background-color: #9007cf00;
+	color: black;
+}
