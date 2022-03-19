@@ -22,8 +22,11 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 import { FenceCasePipe } from './fence-case.pipe';
 import { BookModule } from './book/book.module';
+import { TableBooksComponent } from './table-books/table-books.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { BookModule } from './book/book.module';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    FenceCasePipe
+    FenceCasePipe,
+    TableBooksComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,8 @@ import { BookModule } from './book/book.module';
     MatListModule,
     MatTabsModule,
     MatInputModule,
+    MatTableModule,
+    MatCardModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
