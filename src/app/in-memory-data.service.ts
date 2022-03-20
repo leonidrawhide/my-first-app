@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Hero } from './hero';
 import bookList from './input-data.json';
-import { FirstSet, SecondSet } from './table-books/table-books';
+import { FirstSet, SecondSet } from './book/table-books/table-books';
 
 @Injectable({
   providedIn: 'root',

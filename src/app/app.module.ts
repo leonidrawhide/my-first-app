@@ -26,10 +26,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { FenceCasePipe } from './fence-case.pipe';
 import { BookModule } from './book/book.module';
-import { TableBooksComponent } from './table-books/table-books.component';
+import { TableBooksComponent } from './book/table-books/table-books.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,

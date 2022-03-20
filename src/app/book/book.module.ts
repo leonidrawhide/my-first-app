@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book-routing.module';
 import { MatButtonModule } from '@angular/material/button';
+import { BookMainComponent } from './book-main/book-main.component';
 
 
 
@@ -22,7 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
     PageFourComponent, 
     PageFiveComponent,
     PaginationComponent,
-    HeaderComponent
+    HeaderComponent,
+    BookMainComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { catchError, delay, Observable, of, Subscription, tap } from 'rxjs';
-import { MessageService } from '../message.service';
+import { MessageService } from '../../message.service';
 import { FirstSet, SecondSet } from './table-books';
 import { TableBooksService } from './table-books.service';
 
