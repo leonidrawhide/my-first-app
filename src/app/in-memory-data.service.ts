@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 20, name: 'Tornado' }
     ];
 
-    const firstSet: FirstSet[] = bookList.set2.data.map((a: FirstSet) => Object.assign(a, bookList.set1.data.find((b: SecondSet) => b.id == a.id)));
+    const firstSet: FirstSet[] = bookList.set2.data.map(a => Object.assign(a, bookList.set1.data.find(b => b.id == a.id)));
 
     const secondSet: SecondSet[] = bookList.set1.data;
     
