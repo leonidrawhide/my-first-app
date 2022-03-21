@@ -1,8 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { catchError, concat, delay, Observable, of, Subscription, tap } from 'rxjs';
-import { MessageService } from '../../message.service';
 import { BothSets, FirstSet, SecondSet } from './table-books';
 import { TableBooksService } from './table-books.service';
 

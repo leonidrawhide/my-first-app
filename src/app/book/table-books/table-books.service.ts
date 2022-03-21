@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, combineLatest, concat, forkJoin, map, merge, Observable, of, tap } from 'rxjs';
+import { catchError, concat, Observable, of, tap } from 'rxjs';
 import { MessageService } from '../../message.service';
-import { BothSets, FirstSet, SecondSet } from './table-books';
+import { BothSets } from './table-books';
 
 @Injectable({
   providedIn: 'root'
