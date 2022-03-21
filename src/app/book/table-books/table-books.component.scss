@@ -47,7 +47,29 @@
 	}
 }
 
+.cdk-row {
+	&:hover {
+		background: #5c5c5c;
+		cursor: pointer;
+	}
+
+	&:active {
+		background: #a0a0a0;
+		border-left: 1px solid #a0a0a0;
+		border-right: 1px solid #a0a0a0; 
+	}
+}
+
 .mat-column-id {
 	text-align: center;
 	padding: 0 auto;
 }
+
+.example-element-detail {
+	overflow: hidden;
+	display: flex;
+}
+
+tr.example-detail-row {
+	height: 0;
+  }
