@@ -1,9 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { catchError, delay, Observable, of, Subscription, tap } from 'rxjs';
+import { catchError, concat, delay, Observable, of, Subscription, tap } from 'rxjs';
 import { MessageService } from '../../message.service';
-import { FirstSet, SecondSet } from './table-books';
+import { BothSets, FirstSet, SecondSet } from './table-books';
 import { TableBooksService } from './table-books.service';
 
 @Component({
@@ -22,38 +22,41 @@ export class TableBooksComponent implements OnInit {
   expandedElement: FirstSet | null = null;
   constructor(private tableBooksService: TableBooksService) {}
 
-  table: FirstSet[] = [];
+  table: BothSets[] = [];
+  tmp: BothSets[] = []
   total: number = 0
   displayedColumns: string[] = ['id', 'title', 'qtyRelease'];
   description: string | null = null;
 
-  getSetOne() {
-    this.tableBooksService.getSetOne()
-        .subscribe(table => this.table = table);
+  getSets(): void {
+    this.tableBooksService.getSets()
+        .subscribe(table => {
+          this.tmp = table
+          this.addStream()
+        })
   }
 
-  getSetTwo(id: number) {
-    this.tableBooksService.getSetTwo()
-        .subscribe(resp => this.description = resp[id].description)
+  addStream(): void {
+    if (this.table.length != 0) {
+      this.table.map(a => Object.assign(a, this.tmp.find((b: SecondSet) => b.id == a.id)));
+    }
+    else {
+      this.table = this.tmp
+    }
   }
 
   calculateTotal(): void {
+    this.total = 0
     for (let i = 0; i < this.table.length; i++) {
       this.total += this.table[i].qtyRelease
     }
   }
 
-  onRowClick(data: FirstSet) {
-    this.description = null
-    this.getSetTwo(data.id - 1);
-  }
-
   ngOnInit(): void {
-    this.getSetOne()
+    this.getSets()
   }
 
   ngDoCheck(): void {
-    this.total = 0
     this.calculateTotal()
   }
 }

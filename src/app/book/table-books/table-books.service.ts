@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, combineLatest, concat, forkJoin, map, merge, Observable, of, tap } from 'rxjs';
 import { MessageService } from '../../message.service';
-import { FirstSet } from './table-books';
+import { BothSets, FirstSet, SecondSet } from './table-books';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +14,16 @@ export class TableBooksService {
   
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
-  
-  getSetOne(): Observable<FirstSet[]> {
-    return this.http.get<FirstSet[]>(this.urlOne).pipe(
-        tap(_ => this.log('fetched first set data of books')),
-        catchError(this.handleError<FirstSet[]>('getSetOne', []))
-    )
-  }
+    private messageService: MessageService) {}
 
-  getSetTwo(): Observable<FirstSet[]> {
-    return this.http.get<FirstSet[]>(this.urlTwo).pipe(
-        tap(_ => this.log('fetched second set data of books')),
-        catchError(this.handleError<FirstSet[]>('getSetTwo', []))
-    )
+  getSets(): Observable<BothSets[]> {
+    return concat(
+        this.http.get<BothSets[]>(this.urlOne).pipe(),
+        this.http.get<BothSets[]>(this.urlTwo).pipe()
+      ).pipe(
+        tap(_ => this.log('fetched set data of books')),
+        catchError(this.handleError<BothSets[]>('getSets', []))
+      )
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
