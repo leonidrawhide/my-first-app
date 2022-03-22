@@ -1,8 +1,8 @@
 <div *ngIf="hero">
-	<h2>{{hero.name | uppercase}} Details</h2>
-	<div><span>id: </span>{{hero.id}}</div>
+	<h2 appTextModificator selectedText="new text" [selectedBackColor]="'pink'" >{{hero.name | uppercase}} Details</h2>
+	<div appTextModificatorHost selectedText="host text" [selectedBackColor]="'lime'"><span>id: </span>{{hero.id}}</div>
 	<div>
-	  <label for="hero-name">Hero name: </label>
+	  <label appRainbowModificator for="hero-name">Hero name: </label>
 	  <mat-form-field>
 		  <input matInput id="hero-name" [(ngModel)]="hero.name">
 	  </mat-form-field>
