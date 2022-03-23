@@ -53,6 +53,11 @@ export class FormComponent implements OnInit {
 
   clearForm() {
     this.form.reset();
+    this.skills.clear()
+    this.skillsCopy = [{name: 'Жизнерадостность'}, {name: 'Заинтересованность'}, {name: 'Интеллект'}];
+    for (let i = 0; i < this.skillsCopy.length; i++) {
+      this.skills.push(this.fb.control(this.skillsCopy[i].name));
+    }
   }
 
   constructor(private fb: FormBuilder, private element: ElementRef) {
