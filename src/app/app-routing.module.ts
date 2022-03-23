@@ -6,6 +6,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BookMainComponent } from './book/book-main/book-main.component';
 import { BookComponent } from './book/book.component';
+import { FormComponent } from './form/form.component';
 // import { TableBooksComponent } from './book/table-books/table-books.component';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'book-main', component: BookComponent },
+  { path: 'form', component: FormComponent },
 ];
 
 @NgModule({

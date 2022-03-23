@@ -1,0 +1,63 @@
+<form [formGroup]="form" class="form">
+
+	<mat-form-field formGroupName="name" appearance="fill">
+		<mat-label>Имя</mat-label>
+		<input matInput formControlName="firstName">
+	</mat-form-field>
+
+	<mat-form-field formGroupName="name" appearance="fill">
+		<mat-label>Фамилия</mat-label>
+		<input matInput formControlName="lastName">
+	</mat-form-field>
+
+	<mat-form-field formGroupName="name" appearance="fill">
+		<mat-label>Отчество</mat-label>
+		<input matInput formControlName="fathersName">
+	</mat-form-field>
+
+	<mat-form-field appearance="fill">
+		<mat-label>Email</mat-label>
+		<input matInput formControlName="email">
+	</mat-form-field>
+
+	<mat-form-field class="example-chip-list" appearance="fill">
+		<mat-label>Умения</mat-label>
+		<mat-chip-list #chipList aria-label="Fruit selection">
+
+		<mat-chip *ngFor="let skill of skillsCopy" (removed)="remove(skill)">
+			{{skill.name}}
+
+			<button matChipRemove>
+			  	<mat-icon>cancel</mat-icon>
+			</button>
+
+		</mat-chip>
+
+		<input placeholder="New skill..."
+			   [matChipInputFor]="chipList"
+			   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+			   [matChipInputAddOnBlur]="addOnBlur"
+			   (matChipInputTokenEnd)="add($event)"
+			   type="text" 
+			   #skillsInput>
+
+		</mat-chip-list>
+	</mat-form-field>
+	<div class="button-wrapper">
+
+		<button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" class="form-button">Submit</button>
+
+		<button mat-raised-button type="submit" (click)="clearForm()" class="form-button">Clear</button>
+
+	</div>
+</form>
+
+
+<div class="user-input">
+	<div class="first-name-display">First name: {{ form.value.name.firstName }}</div>
+	<div class="last-name-display">Last name: {{ form.value.name.lastName }}</div>
+	<div class="fathers-name-display">Father's name: {{ form.value.name.fathersName }}</div>
+	<div class="email-display">Email: {{ form.value.email }}</div>
+	<div class="skills-display">Skills: {{ form.value.skills }}</div>
+	Form status: {{ form.status }}
+</div>

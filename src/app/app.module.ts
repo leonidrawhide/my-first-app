@@ -5,9 +5,7 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPseudoCheckbox } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,12 +22,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { FenceCasePipe } from './fence-case.pipe';
 import { BookModule } from './book/book.module';
 import { TableBooksComponent } from './book/table-books/table-books.component';
 import { TextModificatorDirective } from './directives/text-modificator.directive';
 import { RainbowModificatorDirective } from './directives/rainbow-modificator.directive';
 import { TextModificatorHostDirective } from './directives/text-modificator-host.directive';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [ 
@@ -43,7 +43,8 @@ import { TextModificatorHostDirective } from './directives/text-modificator-host
     TableBooksComponent,
     TextModificatorDirective,
     RainbowModificatorDirective,
-    TextModificatorHostDirective
+    TextModificatorHostDirective,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +58,7 @@ import { TextModificatorHostDirective } from './directives/text-modificator-host
     MatInputModule,
     MatTableModule,
     MatCardModule,
+    MatChipsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
