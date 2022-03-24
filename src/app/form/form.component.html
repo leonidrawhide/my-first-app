@@ -20,27 +20,30 @@
 		<input matInput formControlName="email">
 	</mat-form-field>
 
+	<!-- <div *ngFor="let skill of skills.controls; 
+      let i = index" [formGroupName]="i">
+    	<div>{{skill.value}}</div>
+	</div> -->
+
 	<mat-form-field class="example-chip-list" appearance="fill">
 		<mat-label>Умения</mat-label>
 		<mat-chip-list #chipList aria-label="Fruit selection">
 
-		<mat-chip *ngFor="let skill of skillsCopy" (removed)="remove(skill)">
-			{{skill.name}}
+			<mat-chip *ngFor="let skill of skills.controls; let i = index" (removed)="remove(i)">
+			<!-- (removed)="remove(skill.value)" -->
+				{{ skill.value }}
 
-			<button matChipRemove>
-			  	<mat-icon>cancel</mat-icon>
-			</button>
-
-		</mat-chip>
-
-		<input placeholder="New skill..."
-			   [matChipInputFor]="chipList"
-			   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-			   [matChipInputAddOnBlur]="addOnBlur"
-			   (matChipInputTokenEnd)="add($event)"
-			   type="text" 
-			   #skillsInput>
-
+				<button matChipRemove>
+					<mat-icon>cancel</mat-icon>
+				</button>
+			</mat-chip>
+			<input placeholder="New skill..."
+				[matChipInputFor]="chipList"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				[matChipInputAddOnBlur]="addOnBlur"
+				(matChipInputTokenEnd)="add($event)"
+				type="text" 
+				#skillsInput>
 		</mat-chip-list>
 	</mat-form-field>
 	<div class="button-wrapper">
