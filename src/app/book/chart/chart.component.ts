@@ -12,7 +12,7 @@ export class ChartComponent implements OnInit {
   data = this.chartTransfer.getData();  
 
   constructor(private chartTransfer: ChartTransferService) { 
-    Chart.register(...registerables);
+    if (registerables) Chart.register(...registerables);
   }
 
   ngOnInit(): void {
