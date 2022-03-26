@@ -30,7 +30,6 @@
 		<mat-chip-list #chipList aria-label="Fruit selection">
 
 			<mat-chip *ngFor="let skill of skills.controls; let i = index" (removed)="remove(i)">
-			<!-- (removed)="remove(skill.value)" -->
 				{{ skill.value }}
 
 				<button matChipRemove>

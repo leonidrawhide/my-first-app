@@ -30,6 +30,9 @@ import { TextModificatorDirective } from './directives/text-modificator.directiv
 import { RainbowModificatorDirective } from './directives/rainbow-modificator.directive';
 import { TextModificatorHostDirective } from './directives/text-modificator-host.directive';
 import { FormComponent } from './form/form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ChartComponent } from './book/chart/chart.component';
+
 
 @NgModule({
   declarations: [ 
@@ -44,6 +47,7 @@ import { FormComponent } from './form/form.component';
     TextModificatorDirective,
     RainbowModificatorDirective,
     TextModificatorHostDirective,
+    // ChartComponent,
     FormComponent
   ],
   imports: [
@@ -59,6 +63,7 @@ import { FormComponent } from './form/form.component';
     MatTableModule,
     MatCardModule,
     MatChipsModule,
+    MatDialogModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,

@@ -13,7 +13,7 @@
 
 		.cdk-row {
 			&:hover {
-				background: #5c5c5c;
+				background: rgba(0, 0, 0, 0.055);
 			}
 
 			&:active {
@@ -75,4 +75,12 @@
 
 tr.example-detail-row {
 	height: 0;
-  }
+}
+
+.chart-button_wrapper {
+	text-align: center;
+
+	.chart-open {
+		margin: 15px auto 0;
+	}
+}

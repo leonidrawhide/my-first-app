@@ -11,8 +11,9 @@ import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { BookMainComponent } from './book-main/book-main.component';
-
-
+import { ModalComponent } from './modal/modal.component';
+import { ChartComponent } from './chart/chart.component';
+// import { TableBooksComponent } from './table-books/table-books.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { BookMainComponent } from './book-main/book-main.component';
     PageFiveComponent,
     PaginationComponent,
     HeaderComponent,
-    BookMainComponent
+    BookMainComponent,
+    ModalComponent,
+    ChartComponent
   ],
   imports: [
     CommonModule,

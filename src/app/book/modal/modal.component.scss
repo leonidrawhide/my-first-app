@@ -1,0 +1,14 @@
+.modal-wrapper {
+	width: 600px;
+	height: 400px;
+	position: relative;
+
+	.close-btn {
+		position: absolute;
+		color: black;
+	}
+}
+
+.mat-dialog-content {
+    overflow-x: hidden !important;
+}
