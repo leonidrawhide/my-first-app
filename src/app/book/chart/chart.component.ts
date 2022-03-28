@@ -9,7 +9,8 @@ import { ChartTransferService } from '../chart-transfer.service';
 })
 export class ChartComponent implements OnInit {
 
-  data = this.chartTransfer.getData();  
+  data = this.chartTransfer.getData();
+  show: boolean = true
 
   constructor(private chartTransfer: ChartTransferService) { 
     if (registerables) Chart.register(...registerables);
