@@ -14,7 +14,7 @@ export class CustomApiInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(request: HttpRequest<BothSets[]>, next: HttpHandler): Observable<HttpEvent<BothSets[]>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const cloneRequest = request.clone({
       headers: request.headers.set('X-Header', 'bababooey ' + request.url)
     });
