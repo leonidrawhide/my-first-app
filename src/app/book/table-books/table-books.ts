@@ -11,3 +11,12 @@ export interface SecondSet {
 }
 
 export interface BothSets extends FirstSet, SecondSet {}
+
+export interface BothSetsAPI {
+	set1: {
+		data: FirstSet[];
+	},
+	set2: {
+		data: SecondSet[];
+	}
+}

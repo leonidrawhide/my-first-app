@@ -69,9 +69,9 @@ import { CustomApiInterceptor } from './custom-api.interceptor';
     AppRoutingModule,
     HttpClientModule,
     BookModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // ),
   ],
   providers: [
     {

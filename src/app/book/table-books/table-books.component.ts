@@ -36,18 +36,8 @@ export class TableBooksComponent implements OnInit {
   getSets(): void {
     this.tableBooksService.getSets()
         .subscribe(table => {
-          this.tmp = table
-          this.addStream()
+          this.table = table.set1.data.map(a => Object.assign(a, table.set2.data.find((b: SecondSet) => b.id == a.id)));
         })
-  }
-
-  addStream(): void {
-    if (this.table.length != 0) {
-      this.table.map(a => Object.assign(a, this.tmp.find((b: SecondSet) => b.id == a.id)));
-    }
-    else {
-      this.table = this.tmp
-    }
   }
 
   calculateTotal(): void {
@@ -72,8 +62,6 @@ export class TableBooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSets()
-    
-    this.tableBooksService.getBooks().subscribe()
   }
 
   ngDoCheck(): void {

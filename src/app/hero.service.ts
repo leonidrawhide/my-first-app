@@ -10,6 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HeroService {
+  private heroesUrl = 'http://localhost:4200/api/heroes.json';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -18,7 +19,9 @@ export class HeroService {
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
+    console.log(this.http.get<Hero[]>(`${this.heroesUrl}`)
+    .pipe().subscribe())
+    return this.http.get<Hero[]>(`${this.heroesUrl}`)
       .pipe(
         tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Hero[]>('getHeroes', [])),
@@ -53,7 +56,7 @@ export class HeroService {
       tap(x => x.length ?
         this.log(`found heroes matching "${term}"`) :
         this.log(`no heroes matching "${term}"`)),
-      catchError(this.handleError<Hero[]>('searchHeroes', []))
+        catchError(this.handleError<Hero[]>('searchHeroes', []))
     );
   }
 
@@ -62,7 +65,6 @@ export class HeroService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  private heroesUrl = 'api/heroes';  // URL to web api
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

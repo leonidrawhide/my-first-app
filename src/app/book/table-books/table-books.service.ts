@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, concat, Observable, of, tap } from 'rxjs';
 import { MessageService } from '../../message.service';
-import { BothSets } from './table-books';
+import { BothSets, BothSetsAPI } from './table-books';
 
 @Injectable({
   providedIn: 'root'
@@ -16,23 +16,9 @@ export class TableBooksService {
     private http: HttpClient,
     private messageService: MessageService) {}
 
-    // getBooks(): Observable<any> {
-    //   return concat(
-    //     this.http.get<BothSets[]>(`${this.urlOne}/books.json`)
-    //   ).pipe(
-    //     console.log()
-    //   )
-    // }
-
-    getBooks(): Observable<any> {
-      return this.http.get(`${this.urlOne}/books.json`).pipe(
-        tap((resp: any) => console.info(resp, 'info'))
-      )
-    }
-
-  getSets(): Observable<BothSets[]> {
+    getSets(): Observable<BothSetsAPI> {
     return concat(
-        this.http.get<BothSets[]>(`${this.urlOne}/books.json`)
+        this.http.get<BothSetsAPI>(`${this.urlOne}/books.json`)
       ).pipe(
         tap(resp => {
           console.info(resp, 'json data of books')
@@ -40,7 +26,7 @@ export class TableBooksService {
         // tap(_ => this.log('fetched set data of books')),
         // catchError(this.handleError<BothSets[]>('getSets', []))
       )
-  }
+    }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
