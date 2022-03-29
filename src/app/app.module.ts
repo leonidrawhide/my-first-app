@@ -33,6 +33,7 @@ import { FormComponent } from './form/form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChartComponent } from './book/chart/chart.component';
 import { CustomApiInterceptor } from './custom-api.interceptor';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CustomApiInterceptor } from './custom-api.interceptor';
     RainbowModificatorDirective,
     TextModificatorHostDirective,
     // ChartComponent,
-    FormComponent
+    FormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

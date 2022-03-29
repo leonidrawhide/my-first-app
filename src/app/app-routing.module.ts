@@ -7,6 +7,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BookMainComponent } from './book/book-main/book-main.component';
 import { BookComponent } from './book/book.component';
 import { FormComponent } from './form/form.component';
+import { LoginComponent } from './login/login.component';
 // import { TableBooksComponent } from './book/table-books/table-books.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'book-main', component: BookComponent },
   { path: 'form', component: FormComponent },
+  { path: 'auth', component: LoginComponent }
 ];
 
 @NgModule({

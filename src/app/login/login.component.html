@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+	<ng-container *ngIf="!loginStatus; else logout" class="form-wrap">
+		<mat-form-field appearance="fill">
+			<mat-label for="login">Login</mat-label>
+			<input matInput name="login" type="text" [formControlName]="'login'" appearance="fill">
+		</mat-form-field>
+		<mat-form-field appearance="fill">
+			<mat-label for="password">Password</mat-label>
+			<input matInput name="password" type="password" [formControlName]="'passw'" appearance="fill">
+		</mat-form-field>
+		<div class="button-wrapper">
+			<button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="!form.valid">Login</button>
+		</div>
+	</ng-container>
+	
+	<ng-template #logout >
+		<div class="button-wrapper">
+			<button mat-raised-button color="primary" type="submit" (click)="userLogout()" >Logout</button>
+		</div>
+	</ng-template>
+</form>
+
