@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from 'src/app/login/login.service';
 import { ChartTransferService } from '../chart-transfer.service';
 import { ChartComponent } from '../chart/chart.component';
 import { ModalComponent } from '../modal/modal.component';
@@ -24,7 +25,8 @@ export class TableBooksComponent implements OnInit {
   constructor(
     private tableBooksService: TableBooksService,
     private chartTransfer: ChartTransferService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private LoginService: LoginService
   ) {}
 
   table: BothSets[] = [];
@@ -32,6 +34,7 @@ export class TableBooksComponent implements OnInit {
   total: number = 0
   displayedColumns: string[] = ['id', 'title', 'qtyRelease'];
   description: string | null = null;
+  loginStatus: boolean = this.LoginService.loginStatus;
 
   getSets(): void {
     this.tableBooksService.getSets()

@@ -15,7 +15,7 @@ export class LoginService {
   ) { }
 
   checkLogin(login: string, password: string): void {
-    this.http.get<any>(`http://localhost:4200/api/users.json`).pipe().subscribe(users => {
+    this.http.get<any>(`http://localhost:4200/api/users.json`).subscribe(users => {
       users.map((user: any) => {
         if (user.name == login && user.password == password) {
           this.loginStatus = true
@@ -23,6 +23,5 @@ export class LoginService {
       })
       if (this.loginStatus == false || login == '' || password == '') this.router.navigate(['/registration']);
     })
-    
   }
 }

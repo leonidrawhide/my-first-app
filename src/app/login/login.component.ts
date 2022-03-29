@@ -10,6 +10,8 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private loginService: LoginService) { }
+  name: string | null = ''
+  ps: string | null = ''
 
   form = this.fb.group({
     login: ['', Validators.required],
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     console.log(this.form.value)
     this.loginService.checkLogin(this.form.value.login, this.form.value.passw)
-
+    this.form.reset();
   }
 
   userLogout(): void {

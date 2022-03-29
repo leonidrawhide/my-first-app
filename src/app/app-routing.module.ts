@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'book-main', component: BookComponent },
   { path: 'form', component: FormComponent },
-  { path: 'auth', component: LoginComponent }
+  // { path: 'auth', component: LoginComponent }
 ];
 
 @NgModule({
