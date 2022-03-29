@@ -72,6 +72,8 @@ export class TableBooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSets()
+    
+    this.tableBooksService.getBooks().subscribe()
   }
 
   ngDoCheck(): void {

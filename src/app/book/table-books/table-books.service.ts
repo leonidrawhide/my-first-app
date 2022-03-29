@@ -9,20 +9,36 @@ import { BothSets } from './table-books';
 })
 export class TableBooksService {
 
-  urlOne: string = 'api/firstSet';
+  urlOne: string = 'http://localhost:4200/api';
   urlTwo: string = 'api/secondSet';
   
   constructor(
     private http: HttpClient,
     private messageService: MessageService) {}
 
+    // getBooks(): Observable<any> {
+    //   return concat(
+    //     this.http.get<BothSets[]>(`${this.urlOne}/books.json`)
+    //   ).pipe(
+    //     console.log()
+    //   )
+    // }
+
+    getBooks(): Observable<any> {
+      return this.http.get(`${this.urlOne}/books.json`).pipe(
+        tap((resp: any) => console.info(resp, 'info'))
+      )
+    }
+
   getSets(): Observable<BothSets[]> {
     return concat(
-        this.http.get<BothSets[]>(this.urlOne).pipe(),
-        this.http.get<BothSets[]>(this.urlTwo).pipe()
+        this.http.get<BothSets[]>(`${this.urlOne}/books.json`)
       ).pipe(
-        tap(_ => this.log('fetched set data of books')),
-        catchError(this.handleError<BothSets[]>('getSets', []))
+        tap(resp => {
+          console.info(resp, 'json data of books')
+        })
+        // tap(_ => this.log('fetched set data of books')),
+        // catchError(this.handleError<BothSets[]>('getSets', []))
       )
   }
 

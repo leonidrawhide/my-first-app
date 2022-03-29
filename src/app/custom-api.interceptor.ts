@@ -3,11 +3,9 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor,
-  HttpHeaders
+  HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BothSets } from './book/table-books/table-books';
 
 @Injectable()
 export class CustomApiInterceptor implements HttpInterceptor {

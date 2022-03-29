@@ -9,7 +9,7 @@ export class ChartTransferService {
 
   data: BothSets[] | undefined;
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   saveData(data: BothSets[]) {
     this.data = data
