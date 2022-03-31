@@ -26,12 +26,11 @@ export class AuthService {
   
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
         localStorage.setItem('user', JSON.stringify(user));
-        JSON.parse(localStorage.getItem('user')!);
+        // JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        // JSON.parse(localStorage.getItem('user')!);
       }
     });
   }
@@ -57,12 +56,13 @@ export class AuthService {
 
   /**
    * Сравнивает время с временем смерти токена. Если время токена вышло,
-   * возвращает false, иначе true
+   * возвращает false, иначе true. Также, если время токена вышло, то чистит localStorage
    */
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     const loginStatus = user?.stsTokenManager?.expirationTime > Date.now() ? true : false
+    if (!loginStatus) localStorage.removeItem('user');
     return loginStatus
   }
 
@@ -103,7 +103,8 @@ export class AuthService {
   }
 
   /**
-   * рефрешит токен и возращает его. Если юзер незалогинен, вернет undefined
+   * проверяет на месте ли токен. Если его нет, то возвращает undefined
+   * иначе возвращает действительный токен и рефрешит его
    * @returns рефрешутый токен
    */
 

@@ -35,9 +35,9 @@ export class CustomApiInterceptor implements HttpInterceptor {
     console.log(cloneRequest)
 
     return next.handle(cloneRequest).pipe(
-      tap((resp) => {
-        console.log(resp);
-      }),
+      // tap((resp) => {
+      //   console.log(resp);
+      // }),
       catchError((error: HttpErrorResponse) => {
         if (error.status == 401) {
           this.router.navigate(['/registration']);

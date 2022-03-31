@@ -13,7 +13,7 @@ import { PageTwoComponent } from './page-two/page-two.component';
 import { TableBooksComponent } from './table-books/table-books.component';
 
 const bookRoutes: Routes = [
-  { path: "book-main", component: BookComponent },
+  { path: "book-main", component: BookComponent, canActivate: [AuthGuard]},
   { path: 'book', component: BookMainComponent, canActivate: [AuthGuard], children: [
     { path: '', redirectTo: 'page-1', pathMatch: 'full' },
     { path: 'page-1', component: PageOneComponent},
