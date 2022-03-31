@@ -114,14 +114,13 @@ export class AuthService {
       return undefined
     }
 
-    let result: string | undefined = 'didnt'
     this.afAuth.onAuthStateChanged(user => {
       if (user) {
         user.getIdToken(true)
         localStorage.setItem('user', JSON.stringify(user))
       }
     })
-    console.log(2)
+
     return JSON.parse(localStorage.getItem('user')!)?.stsTokenManager?.accessToken
   }
 }
