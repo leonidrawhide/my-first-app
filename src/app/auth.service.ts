@@ -1,14 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
-// import { User } from '../services/user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { AuthCredential, OAuthCredential } from 'firebase/auth';
-import firebase from 'firebase/compat';
+import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +18,16 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
-    /* Saving user data in localstorage when 
-    logged in and setting up null when logged out */
+
+    /**
+     * Сохраняем данные в localStorage при входе
+     * и вычищаем при выходе
+     */
+  
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
+        localStorage.setItem('user', JSON.stringify(user));
         JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', 'null');
@@ -36,67 +35,66 @@ export class AuthService {
       }
     });
   }
-  // Sign in with email/password
+
+  /**
+   * логика для входа с емейлом и паролем
+   * @param email 
+   * @param password 
+   */
+
   SignIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then(() => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
-        this.SetUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.code);
       });
   }
-  // Returns true when user is looged in 
+
+  /**
+   * Сравнивает время с временем смерти токена. Если время токена вышло,
+   * возвращает false, иначе true
+   */
+
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     const loginStatus = user?.stsTokenManager?.expirationTime > Date.now() ? true : false
     return loginStatus
   }
-  // Sign in with Google
+
+  /**
+   * входим через гугл, обращаемся к AuthLogin для этого
+   */
+
   GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      if (res) {
-        this.router.navigate(['dashboard']);
-      }
-    });
+    return this.AuthLogin(new auth.GoogleAuthProvider())
   }
-  // Auth logic to run auth providers
+
+  /**
+   * здесь логика которая позволяет логиниться, а потом перекидывает 
+   * юзера на главную страницу
+   * @param provider тут он просит объяснить через какой сервис мы заходим
+   */ 
+
   AuthLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
-      .then((result) => {
+      .then(() => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
-        this.SetUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
-  /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
-    const userData: any = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-    };
-    return userRef.set(userData, {
-      merge: true,
-    });
-  }
-  // Sign out
+  /**
+   * Выходит, удаляет юзера из localStorage и редиректит на страницу входа (на всякий)
+   */
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
@@ -104,20 +102,26 @@ export class AuthService {
     });
   }
 
+  /**
+   * рефрешит токен и возращает его. Если юзер незалогинен, вернет undefined
+   * @returns рефрешутый токен
+   */
+
+  
   getCredentials(): string | undefined {
-    this.afAuth.onAuthStateChanged(u => {
-      if (u) {
-        u.getIdToken(true).then(token => {
-          console.log('changed')
-          console.log(token)
-        })
-        localStorage.setItem('user', JSON.stringify(u));
-        JSON.parse(localStorage.getItem('user')!);
+    if (this.isLoggedIn == false) {
+      console.log('not logged in')
+      return undefined
+    }
+
+    let result: string | undefined = 'didnt'
+    this.afAuth.onAuthStateChanged(user => {
+      if (user) {
+        user.getIdToken(true)
+        localStorage.setItem('user', JSON.stringify(user))
       }
     })
-    const user = JSON.parse(localStorage.getItem('user')!);
-    console.log('now')
-    console.log(user?.stsTokenManager?.accessToken)
-    return user?.stsTokenManager?.accessToken
+    console.log(2)
+    return JSON.parse(localStorage.getItem('user')!)?.stsTokenManager?.accessToken
   }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/auth.guard';
+import { BackGuard } from '../core/back.guard';
 import { BookMainComponent } from './book-main/book-main.component';
 import { BookComponent } from './book.component';
 import { PageFiveComponent } from './page-five/page-five.component';

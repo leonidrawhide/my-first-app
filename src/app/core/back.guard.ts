@@ -6,7 +6,7 @@ import { AuthService } from '../auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class BackGuard implements CanActivate {
   constructor(
     public authService: AuthService,
     public router: Router
@@ -14,13 +14,11 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.authService.isLoggedIn == false) {
-      this.router.navigate(['/auth'])
-      console.log('aye we not letting u in')
+      if(this.authService.isLoggedIn == false) {
+        this.router.navigate(['/auth'])
+        return true;
+      }
       return false;
-    }
-    return true;
   }
-  
   
 }

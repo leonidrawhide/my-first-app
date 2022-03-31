@@ -9,6 +9,7 @@ import { BookComponent } from './book/book.component';
 import { FormComponent } from './form/form.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './core/auth.guard';
+import { BackGuard } from './core/back.guard';
 // import { TableBooksComponent } from './book/table-books/table-books.component';
 
 const routes: Routes = [

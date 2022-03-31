@@ -40,6 +40,10 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthService } from './auth.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AuthGuard } from './core/auth.guard';
+import { BackGuard } from './core/back.guard';
+
 
 
 @NgModule({
@@ -72,6 +76,7 @@ import { AuthService } from './auth.service';
     MatTableModule,
     MatCardModule,
     MatChipsModule,
+    MatFormFieldModule,
     MatDialogModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -92,7 +97,12 @@ import { AuthService } from './auth.service';
       useClass: CustomApiInterceptor,
       multi: true,
     },
-    AuthService
+    AuthService,
+    BackGuard,
+    { 
+      provide: AuthGuard, 
+      useClass: AuthGuard
+    }
   ],
   bootstrap: [AppComponent]
 })
