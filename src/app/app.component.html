@@ -1,11 +1,13 @@
-<h1 appRainbowModificator>{{title | fenceCase}}</h1>
+<div class="title-wrapper">
+	<h1 appRainbowModificator>{{title | fenceCase}}</h1>
+</div>
 <nav mat-tab-nav-bar [backgroundColor]="background" [tabPanel]="tabPanel">
 	<a mat-tab-link routerLink="/dashboard">Dashboard</a>
 	<a mat-tab-link routerLink="/heroes">Heroes</a>
 	<a mat-tab-link routerLink="/registration">Registration</a>
 	<a mat-tab-link routerLink="/book-main">Book</a>
 	<a mat-tab-link routerLink="/form">Form</a>
-	<!-- <a mat-tab-link routerLink="/auth">Auth</a> -->
+	<a mat-tab-link routerLink="/auth">Auth</a>
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 

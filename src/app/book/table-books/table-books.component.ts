@@ -34,7 +34,7 @@ export class TableBooksComponent implements OnInit {
   total: number = 0
   displayedColumns: string[] = ['id', 'title', 'qtyRelease'];
   description: string | null = null;
-  loginStatus: boolean = this.LoginService.loginStatus;
+  // loginStatus: boolean = this.LoginService.loginStatus;
 
   getSets(): void {
     this.tableBooksService.getSets()

@@ -21,7 +21,7 @@ export class TableBooksService {
         this.http.get<BothSetsAPI>(`${this.urlOne}/books.json`)
       ).pipe(
         tap(resp => {
-          console.info(resp, 'json data of books')
+          // console.info(resp, 'json data of books')
         })
         // tap(_ => this.log('fetched set data of books')),
         // catchError(this.handleError<BothSets[]>('getSets', []))

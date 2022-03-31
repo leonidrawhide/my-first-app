@@ -1,22 +1,93 @@
 <form [formGroup]="form">
-	<ng-container *ngIf="!loginStatus; else logout" class="form-wrap">
+	<ng-container *ngIf="!authService.isLoggedIn; else logout" class="form-wrap">
 		<mat-form-field appearance="fill">
 			<mat-label for="login">Login</mat-label>
-			<input matInput name="login" type="text" [formControlName]="'login'" appearance="fill">
+			<input matInput name="login" type="text" [formControlName]="'login'" appearance="fill" #userName>
+			<mat-error *ngIf="isControlInvalid('login')">Not a valid email</mat-error>
 		</mat-form-field>
 		<mat-form-field appearance="fill">
 			<mat-label for="password">Password</mat-label>
-			<input matInput name="password" type="password" [formControlName]="'passw'" appearance="fill">
+			<input matInput name="password" type="password" [formControlName]="'password'" appearance="fill" #userPassword>
+			<mat-error *ngIf="isControlInvalid('login')">Not a valid password</mat-error>
 		</mat-form-field>
 		<div class="button-wrapper">
-			<button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="!form.valid">Login</button>
+			<button mat-raised-button color="primary" type="submit" (click)="authService.SignIn(userName.value, userPassword.value)" [disabled]="!form.valid">Login</button>
+			<button mat-raised-button color="warn" type="submit" (click)="authService.GoogleAuth()" class="google-btn">
+				<mat-icon class="material-icons-outlined">login</mat-icon>
+				Login with Google
+			</button>
 		</div>
 	</ng-container>
 	
 	<ng-template #logout >
 		<div class="button-wrapper">
-			<button mat-raised-button color="primary" type="submit" (click)="userLogout()" >Logout</button>
+			<button mat-raised-button color="primary" type="submit" (click)="authService.signOut()" >Logout</button>
 		</div>
 	</ng-template>
 </form>
+<!-- <ng-container *ngIf="!authService.isLoggedIn; else logout">
+	<div class="displayTable">
+		<div class="displayTableCell">
+		  <div class="authBlock">
+			<h3>Sign In</h3>
+			<div class="formGroup">
+			  <input type="text" class="formControl" placeholder="Username" #userName required>
+			</div>
+			<div class="formGroup">
+			  <input type="password" class="formControl" placeholder="Password" #userPassword required>
+			</div>
 
+			<div class="formGroup">
+			  <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+			</div>
+			<div class="formGroup">
+			  <span class="or"><span class="orInner">Or</span></span>
+			</div>
+			<div class="formGroup">
+			  <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+				<i class="fab fa-google-plus-g"></i>
+				Log in with Google
+			  </button>
+			</div>
+		  </div>
+		</div>
+	</div>
+</ng-container>
+<ng-template #logout>
+	<div>
+		<button (click)="authService.signOut()">Sign out</button>
+	</div>
+</ng-template> -->
+
+
+<!-- <div class="window">
+	<form [formGroup]="form">
+	  	<h2>Sign In</h2>
+	  	<mat-form-field appearance="fill">
+			<mat-label>Enter your email</mat-label>
+			<input 
+				matInput 
+				type="text"
+				placeholder="login" 
+				formControlName="login"
+				#userName 
+			/>
+			<mat-error *ngIf="isControlInvalid('email')">Not a valid email</mat-error>
+	  	</mat-form-field>
+	  	<mat-form-field appearance="fill">
+			<mat-label>Enter your password</mat-label>
+			<input
+				matInput
+				type="password"
+				placeholder="password"
+				formControlName="password"
+				#userPassword
+			/>
+			<mat-error *ngIf="isControlInvalid('password')">Not a valid password</mat-error>
+	  	</mat-form-field>
+	  	<button class="btn1" [disabled]="!form.valid" (click)="authService.SignIn(userName.value, userPassword.value)">Sign In</button>
+	  	<button class="btn" (click)="authService.GoogleAuth()">Sign in with Google</button>
+	  	<a>Create account?</a>
+	</form>
+</div>
+ -->

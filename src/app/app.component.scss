@@ -1,4 +1,12 @@
-h1 {
-	text-align: center;
-	margin-top: 20px;
+
+
+.title-wrapper {
+	max-width: fit-content;
+	text-align:center;
+	margin: 20px auto;
+
+	h1 {
+		padding: 3px;
+		font-weight: bold;
+	}
 }

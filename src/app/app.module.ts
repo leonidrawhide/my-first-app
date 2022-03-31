@@ -31,9 +31,15 @@ import { RainbowModificatorDirective } from './directives/rainbow-modificator.di
 import { TextModificatorHostDirective } from './directives/text-modificator-host.directive';
 import { FormComponent } from './form/form.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ChartComponent } from './book/chart/chart.component';
 import { CustomApiInterceptor } from './custom-api.interceptor';
 import { LoginComponent } from './login/login.component';
+import { environment } from "./login/environment";
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -71,6 +77,11 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule,
     BookModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, { dataEncapsulation: false }
     // ),
@@ -81,6 +92,7 @@ import { LoginComponent } from './login/login.component';
       useClass: CustomApiInterceptor,
       multi: true,
     },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
