@@ -9,11 +9,8 @@ import { resolve } from 'dns';
   providedIn: 'root'
 })
 export class AuthService {
-  userData: any; // Save logged in user data
-  credential: any = null;
-  token: string | undefined;
   constructor(
-    public afs: AngularFirestore, // Inject Firestore service
+    // public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
@@ -27,10 +24,8 @@ export class AuthService {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
-        // JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', 'null');
-        // JSON.parse(localStorage.getItem('user')!);
       }
     });
   }
@@ -41,7 +36,7 @@ export class AuthService {
    * @param password 
    */
 
-  SignIn(email: string, password: string) {
+  signIn(email: string, password: string) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -61,7 +56,7 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    const loginStatus = user?.stsTokenManager?.expirationTime > Date.now() ? true : false
+    const loginStatus = user?.stsTokenManager?.expirationTime > Date.now()
     if (!loginStatus) localStorage.removeItem('user');
     return loginStatus
   }

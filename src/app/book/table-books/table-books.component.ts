@@ -19,6 +19,7 @@ import { TableBooksService } from './table-books.service';
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
+  providers: [TableBooksService]
 })
 export class TableBooksComponent implements OnInit {
   expandedElement: FirstSet | null = null;

@@ -13,7 +13,8 @@
 		</mat-form-field>
 
 		<div class="button-wrapper">
-			<button mat-raised-button color="primary" type="submit" (click)="authService.SignIn(userName.value, userPassword.value)" [disabled]="!form.valid">Login</button>
+			<button mat-raised-button color="primary" type="submit" (click)="authService.signIn(userName.value, userPassword.value)" [disabled]="!form.valid">Login</button>
+
 			<button mat-raised-button color="warn" type="submit" (click)="authService.GoogleAuth()" class="google-btn">
 				<mat-icon class="material-icons-outlined">login</mat-icon>
 				Login with Google

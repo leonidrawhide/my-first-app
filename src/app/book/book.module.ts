@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BookMainComponent } from './book-main/book-main.component';
 import { ModalComponent } from './modal/modal.component';
 import { ChartComponent } from './chart/chart.component';
+import { HttpClientModule } from '@angular/common/http';
 // import { TableBooksComponent } from './table-books/table-books.component';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ChartComponent } from './chart/chart.component';
   imports: [
     CommonModule,
     BookRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ]
 })
 export class BookModule { }

@@ -22,10 +22,8 @@ export class CustomApiInterceptor implements HttpInterceptor {
     public afAuth: AngularFireAuth) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // console.log(this.afAuth.currentUser.getIdToken(true))
     this.accessToken = this.authService.getCredentials()
-    // console.log('rly??')
-    // console.log(this.accessToken)
+    
     if (this.accessToken == undefined) this.accessToken = 'guest'
 
     const cloneRequest = request.clone({

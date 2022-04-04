@@ -24,7 +24,7 @@ const bookRoutes: Routes = [
     ] 
   },
   
-  { path: 'book-table', component: TableBooksComponent },
+  { path: 'book-table', component: TableBooksComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

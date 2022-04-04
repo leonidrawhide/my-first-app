@@ -17,15 +17,7 @@ export class TableBooksService {
     private messageService: MessageService) {}
 
     getSets(): Observable<BothSetsAPI> {
-    return concat(
-        this.http.get<BothSetsAPI>(`${this.urlOne}/books.json`)
-      ).pipe(
-        tap(resp => {
-          // console.info(resp, 'json data of books')
-        })
-        // tap(_ => this.log('fetched set data of books')),
-        // catchError(this.handleError<BothSets[]>('getSets', []))
-      )
+    return this.http.get<BothSetsAPI>(`${this.urlOne}/books.json`)
     }
 
   private handleError<T>(operation = 'operation', result?: T) {
