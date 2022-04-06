@@ -40,11 +40,21 @@ export class TableBooksComponent implements OnInit {
   getSets(): void {
     this.tableBooksService.getSets()
         .subscribe(table => {
-          this.table = table.set1.data.map(a => Object.assign(a, table.set2.data.find((b: SecondSet) => b.id == a.id)));
+          this.table = table.set1.data.map(a => 
+            Object.assign(a, table.set2.data.find((b: SecondSet) => 
+              b.id == a.id
+            ))
+          );
         })
+    // console.log('============')
+    // console.log(this.table)
+    // console.log('============')
   }
 
   calculateTotal(): void {
+    // console.log('++++++')
+    // console.log(this.table)
+    // console.log('++++++++')
     this.total = 0
     for (let i = 0; i < this.table.length; i++) {
       this.total += this.table[i].qtyRelease

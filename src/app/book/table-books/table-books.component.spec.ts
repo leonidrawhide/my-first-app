@@ -24,7 +24,6 @@ describe('TableBooksComponent', () => {
         MatDialogModule
       ],
       declarations: [
-        TableBooksComponent,
         AppComponent
       ],
       providers: [
@@ -34,11 +33,7 @@ describe('TableBooksComponent', () => {
         Overlay
       ]
     })
-  });
 
-  let spy;
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(TableBooksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -48,21 +43,22 @@ describe('TableBooksComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call getSets() without any problems', fakeAsync(() => {
-    spyOn(component, 'getSets')
-    component.getSets();
-    expect(component.getSets).toHaveBeenCalled();
-  }));
 
-  it('should call calculateTotal() without any problems', async () => {
-    spyOn(component, 'calculateTotal')
-    component.calculateTotal();
-    expect(component.calculateTotal).toHaveBeenCalled();
-  })
+  // it('should open dialog without any problems', fakeAsync(() => {
+  //   spyOn(component, 'openDialog')
+  //   component.openDialog();
+  //   expect(component.dialog).toBeTrue();
+  // }));
 
-  it('should call openDialog() without any problems', async () => {
-    spyOn(component, 'openDialog')
-    component.openDialog();
-    expect(component.openDialog).toHaveBeenCalled();
-  })
+  // it('should call calculateTotal() without any problems', async () => {
+  //   spyOn(component, 'calculateTotal')
+  //   component.calculateTotal();
+  //   expect(component.calculateTotal).toHaveBeenCalled();
+  // })
+
+  // it('should call openDialog() without any problems', async () => {
+  //   spyOn(component, 'openDialog')
+  //   component.openDialog();
+  //   expect(component.openDialog).toHaveBeenCalled();
+  // })
 });

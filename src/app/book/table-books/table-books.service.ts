@@ -17,7 +17,7 @@ export class TableBooksService {
     private messageService: MessageService) {}
 
     getSets(): Observable<BothSetsAPI> {
-    return this.http.get<BothSetsAPI>(`${this.urlOne}/books.json`)
+      return this.http.get<BothSetsAPI>(`${this.urlOne}/books.json`)
     }
 
   private handleError<T>(operation = 'operation', result?: T) {

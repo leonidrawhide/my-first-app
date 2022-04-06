@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 import { FenceCasePipe } from './fence-case.pipe';
 import { BookModule } from './book/book.module';
 import { TableBooksComponent } from './book/table-books/table-books.component';
@@ -78,6 +79,7 @@ import { BackGuard } from './core/back.guard';
     MatChipsModule,
     MatFormFieldModule,
     MatDialogModule,
+    MatMenuModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="6552355757958017102" datatype="html">
+        <source>Create Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/registration/registration.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description"> create account header</note>
+        <note priority="1" from="meaning">Reagistratin header </note>
+      </trans-unit>
+      <trans-unit id="258357125367381858" datatype="html">
+        <source>Create a free salmanwap account to access all articles and videos.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/registration/registration.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description"> create account subheader</note>
+        <note priority="1" from="meaning">Registration subheader </note>
+      </trans-unit>
+      <trans-unit id="31617520286590518" datatype="html">
+        <source>Username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/registration/registration.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description"> username label</note>
+        <note priority="1" from="meaning">username label </note>
+      </trans-unit>
+      <trans-unit id="3621427673236638090" datatype="html">
+        <source>Must not contain any special characters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/registration/registration.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description"> err msg</note>
+        <note priority="1" from="meaning">err msg </note>
+      </trans-unit>
+      <trans-unit id="3291665737802112932" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/registration/registration.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description"> psw label</note>
+        <note priority="1" from="meaning">psw label </note>
+      </trans-unit>
+      <trans-unit id="1707574989246814460" datatype="html">
+        <source>Must have atleast 8+ characters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/registration/registration.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description"> psw err msg</note>
+        <note priority="1" from="meaning">psw err msg </note>
+      </trans-unit>
+      <trans-unit id="6467672875196942526" datatype="html">
+        <source>Create a free account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/registration/registration.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description"> create acc btn</note>
+        <note priority="1" from="meaning">create acc btn </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

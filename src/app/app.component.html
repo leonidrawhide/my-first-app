@@ -8,6 +8,12 @@
 	<a mat-tab-link routerLink="/book-main">Book</a>
 	<a mat-tab-link routerLink="/form">Form</a>
 	<a mat-tab-link routerLink="/auth">Auth</a>
+
+	<button mat-button color="white" [matMenuTriggerFor]="menu"><mat-icon>public</mat-icon></button>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item value="ru"><a href="/ru">Русский</a></button>
+		<button mat-menu-item value="en"><a href="/en-US">English</a></button>
+	</mat-menu>
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 

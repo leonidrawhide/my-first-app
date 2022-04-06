@@ -1,3 +1,10 @@
+<button mat-button color="primary" [matMenuTriggerFor]="menu"><mat-icon>public</mat-icon></button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item value="ru">Русский</button>
+  <button mat-menu-item value="en">English</button>
+</mat-menu>
+
+
 <form [formGroup]="form">
 	<ng-container *ngIf="!authService.isLoggedIn; else logout" class="form-wrap">
 		<mat-form-field appearance="fill">
